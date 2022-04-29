@@ -97,7 +97,7 @@ def CancelAppointment(request, uuid):
             ord.status = ConfigChoice.objects.get(name="Cancelled")
             ord.save()
         else:
-            messages.error(request, 'Sorry cannot cancell booking after 24 hours.')
+            messages.error(request, 'Sorry booking cannot be cancelled after 24 hours.')
         return redirect("staff-appointments")
 
     else:
@@ -110,7 +110,7 @@ def CancelAppointment(request, uuid):
             ord.status = ConfigChoice.objects.get(name="Cancelled")
             ord.save()
         else:
-            messages.error(request, 'Sorry cannot cancell booking after 24 hours.')
+            messages.error(request, 'Sorry booking cannot be cancelled after 24 hours.')
         return redirect("user-appointments")
 
 
