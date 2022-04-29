@@ -1,3 +1,4 @@
+from telnetlib import XASCII
 from Common.models import ConfigChoice
 from Order.models import Order
 from django.contrib.auth import authenticate
@@ -261,6 +262,7 @@ def UserAppointments(request):
 
 def DeleteUser(request,id):
     User.objects.filter(id=id).update(is_delete=True)
+    User.objects.filter(id=id).delete()
     return redirect("staff-list")
 
 
