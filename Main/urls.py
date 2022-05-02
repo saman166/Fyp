@@ -20,9 +20,9 @@ from django.conf import settings
 
 
 # customizing admin interface
-admin.site.site_header = 'salon'
-admin.site.site_title = 'salon'
-admin.site.index_title = 'salon Administration'
+admin.site.site_header = 'Lookisimo'
+admin.site.site_title = 'Lookisimo salon'
+admin.site.index_title = 'Lookisimo Salon Administration'
 
 
 urlpatterns = [
