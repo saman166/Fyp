@@ -18,12 +18,12 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes   # , force_text
+from django.utils.encoding import force_bytes  
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .token import account_activation_token
-# from django.contrib.auth.models import User
+
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
@@ -54,7 +54,7 @@ def SignupView(request):
         elif isinstance(month, str):
             month = datetime.datetime.strptime(month, '%B').month
         else:
-            error = "Enter valid Month."
+            error = "Enter a valid Month."
             return render(request, 'home/signup.html', {"error": error, "user_type": user_type})
         password2 = request.POST.get("confirm_password")
         dob = datetime.datetime(year=int(year), month=month, day=int(day))
@@ -80,7 +80,7 @@ def SignupView(request):
             email = EmailMultiAlternatives('Email verification', message, settings.DEFAULT_FROM_EMAIL,[email])
             email.attach_alternative(message, 'text/html')
             email.send()
-            return render(request, 'home/signup.html', {"user_type": user_type,"message":"A link has been sent to your email address, Please click on the link to finish the registration. Thank you"})
+            return render(request, 'home/signup.html', {"user_type": user_type,"message":"A link has been sent to your email address, Please click on the link to complete the registration. Thank you"})
         else:
             error = "Please enter the same password."
             return render(request, 'home/signup.html', {"error":error,"user_type":user_type})
